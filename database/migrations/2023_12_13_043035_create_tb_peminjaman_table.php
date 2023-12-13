@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('tb_peminjaman', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_mobil')->constrained('tb_mobil');
-            $table->foreignId('id_user')->constrained('tb_user');
+            $table->integer('id_mobil');
+            $table->integer('id_user');
             $table->date('tgl_mulai');
             $table->date('tgl_selesai');
             $table->integer('jumlah_biaya');

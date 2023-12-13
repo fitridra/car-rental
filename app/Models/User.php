@@ -19,15 +19,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'usename',
-        'password',
-        'nama',
-        'alamat',
-        'no_telp',
-        'no_sim',
+        'username', 'nama', 'alamat', 'no_telp', 'no_sim', 'password',
     ];
 
     public function peminjaman(){
-        return $this->hasMany(peminjaman::class, 'id', 'id');
+        return $this->hasMany(Peminjaman::class, 'id', 'id');
     }
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('no_telp');
             $table->string('no_sim');
+            $table->string('password');
             $table->timestamps();
         });
     }
