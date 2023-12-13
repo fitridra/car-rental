@@ -17,7 +17,7 @@
 
                             <a href="/tambah" class="btn btn-info btn-icon-text mt-2 mb-2 pull-right"><i class="ti-plus btn-icon-prepend"></i> Tambah</a>
 
-                            <h4 class="title">Data Peminjaman</h4>
+                            <h4 class="title">Data kembali</h4>
                             <p class="category">Berisi sekumpulan data mobil yang disewakan.</p>
                         </div>
                         <div class="content table-responsive table-full-width">
@@ -25,25 +25,26 @@
                                 <thead>
                                     <th>No</th>
                                     <th>No Plat</th>
-                                    <th>Nama Penyewa</th>
                                     <th>Tanggal Mulai</th>
                                     <th>Tanggal Selesai</th>
+                                    <th>Jumlah Biaya</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @php
                                     $no=1;
                                     @endphp
-                                    @foreach($data_peminjaman as $peminjaman)
+                                    @foreach($data_kembali as $kembali)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$peminjaman->mobil->no_plat}}</td>
-                                        <td>{{$peminjaman->tgl_mulai}}</td>
-                                        <td>{{$peminjaman->tgl_selesai}}</td>
+                                        <td>{{$kembali->mobil->no_plat}}</td>
+                                        <td>{{$kembali->tgl_mulai}}</td>
+                                        <td>{{$kembali->tgl_selesai}}</td>
+                                        <td>{{$kembali->jumlah_biaya}}</td>
                                         @if(Auth::user()->id == 1)
                                         @method('delete')
                                         @csrf
-                                        <td><a href="{{route('delete_peminjaman',$peminjaman->id)}}"
+                                        <td><a href="{{route('delete_kembali',$kembali->id)}}"
                                                 class="btn btn-danger btn-sm delete"
                                                 onclick="return confirm('Apakah Ingin Menghapus Data ini ?')"><i
                                                     class="ti-trash"></i></a></td>

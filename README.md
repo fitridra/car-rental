@@ -8,3 +8,10 @@ In the project directory, you can run:
 ### `php artisan db:seed --class=TbMobilSeeder`
 ### `php artisan db:seed --class=TbPeminjamanSeeder`
 ### `php artisan db:seed --class=UsersSeeder`
+
+- Login Account
+
+```
+username = testuser
+password = password123
+```

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mobil;
 
 class MobilController extends Controller
 {
@@ -11,9 +12,10 @@ class MobilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $data_mobil = Mobil::where('status', 'Tersedia')->paginate(4);
+	
+		return view('mobil.index', compact('data_mobil'));
     }
 
     /**

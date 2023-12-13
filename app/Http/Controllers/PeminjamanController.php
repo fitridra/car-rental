@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Peminjaman;
 
 class PeminjamanController extends Controller
 {
@@ -11,9 +12,16 @@ class PeminjamanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $data_peminjaman = Peminjaman::paginate(4);
+	
+		return view('peminjaman.index', compact('data_peminjaman'));
+    }
+
+    public function kembali(){
+        $data_kembali = Peminjaman::paginate(4);
+	
+		return view('peminjaman.kembali', compact('data_kembali'));
     }
 
     /**
@@ -23,7 +31,12 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        //
+        return view('peminjaman/form1');
+    }
+
+    public function create2()
+    {
+        return view('peminjaman/form2');
     }
 
     /**
@@ -34,9 +47,17 @@ class PeminjamanController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validatedData = $request->validate([
+			'id_mobil' => 'required',
+			'id_user' => 'required',
+			'tgl_mulai' => 'required',
+			'tgl_selesai' => 'required',
+		]);
 
+		Hama::create($validatedData);
+
+		return redirect()->route('peminjaman')->with('sukses', 'Data Berhasil Ditambahkan');
+	}
     /**
      * Display the specified resource.
      *
