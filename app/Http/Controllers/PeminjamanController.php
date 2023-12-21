@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Peminjaman;
+use App\Models\Mobil;
 
 class PeminjamanController extends Controller
 {
@@ -33,7 +34,7 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $data = Peminjaman::get();
+        $data = Mobil::where('status', 'Tersedia')->get();
         return view('peminjaman/form1',compact('data'));
     }
 

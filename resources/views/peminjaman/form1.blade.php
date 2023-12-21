@@ -20,7 +20,7 @@
                                         <select class="form-control" name="id_mobil">
                                             <option selected>Pilih Mobil</option>
                                             @foreach($data as $p)
-                                            <option value="{{$p->mobil->id}}">{{$p->mobil->no_plat}} || {{ $p->mobil->merk}} - {{$p->mobil->model}}</option>
+                                            <option value="{{$p->id}}">{{$p->no_plat}} || {{ $p->merk}} - {{$p->model}}</option>
                                             @endforeach
                                         </select>
 
