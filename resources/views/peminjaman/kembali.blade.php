@@ -49,6 +49,10 @@
                                                 onclick="return confirm('Apakah Ingin Menghapus Data ini ?')"><i
                                                     class="ti-trash"></i></a></td>
                                         @endif
+                                        <td><a href="/kembali"
+                                                class="btn btn-info btn-sm"
+                                                onclick="return confirm('Total Biaya = Rp. {{$kembali->jumlah_biaya}}')"><i
+                                                    class="ti-control-forward"></i></a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

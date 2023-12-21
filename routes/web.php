@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/tambah_peminjaman',[App\Http\Controllers\PeminjamanController::class, 'store'])->name('tambah_peminjaman');
     Route::get('/delete_peminjaman/{id}',[App\Http\Controllers\PeminjamanController::class, 'destroy'])->name('delete_peminjaman');
 
-    Route::get('/kembali', [App\Http\Controllers\PeminjamanController::class, 'index'])->name('kembali');
+    Route::get('/kembali', [App\Http\Controllers\PeminjamanController::class, 'kembali'])->name('kembali');
 
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
     Route::post('/tambah_user',[App\Http\Controllers\UserController::class, 'create'])->name('tambah_user');

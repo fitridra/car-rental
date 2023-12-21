@@ -12,11 +12,11 @@ class Peminjaman extends Model
     protected $fillable = ['id','id_mobil','id_user','tgl_mulai','tgl_selesai','jumlah_biaya'];
     protected $primarykey = "id";
 
-    public function mobil(){
-        return $this->belongsTo(Mobil::class, 'id', 'id');
+    public function pengguna(){
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
-    public function user(){
-        return $this->belongsTo(User::class, 'id', 'id');
+    public function mobil(){
+        return $this->belongsTo(Mobil::class, 'id_mobil', 'id');
     }
 }

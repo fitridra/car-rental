@@ -11,13 +11,17 @@
                         <h4 class="title">Form Pengembalian</h4>
                     </div>
                     <div class="content">
-                        <form action="/kembali" action="post">
+                        <form method="GET" action="/kembali">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>No Plat</label>
-                                        <input type="text" class="form-control border-input" placeholder="No Plat">
-                                    </div>
+                                        <select class="form-control" name="cari">
+                                            <option selected>Pilih Mobil</option>
+                                            @foreach($data as $p)
+                                            <option value="{{$p->id_mobil}}">{{$p->mobil->no_plat}} || {{ $p->mobil->merk}} - {{$p->mobil->model}}</option>
+                                            @endforeach
+                                        </select>                                    </div>
                                 </div>
                             </div>
 

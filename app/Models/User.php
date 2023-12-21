@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username', 'nama', 'alamat', 'no_telp', 'no_sim', 'password',
+        'id','username', 'nama', 'alamat', 'no_telp', 'no_sim', 'password',
     ];
 
     public function peminjaman(){

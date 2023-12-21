@@ -28,7 +28,9 @@
                                     <th>Nama Penyewa</th>
                                     <th>Tanggal Mulai</th>
                                     <th>Tanggal Selesai</th>
+                                    @if(Auth::user()->id == 1)
                                     <th>Action</th>
+                                    @endif
                                 </thead>
                                 <tbody>
                                     @php
@@ -38,6 +40,7 @@
                                     <tr>
                                         <td>{{$no++}}</td>
                                         <td>{{$peminjaman->mobil->no_plat}}</td>
+                                        <td>{{$peminjaman->pengguna?->nama}}</td>
                                         <td>{{$peminjaman->tgl_mulai}}</td>
                                         <td>{{$peminjaman->tgl_selesai}}</td>
                                         @if(Auth::user()->id == 1)

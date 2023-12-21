@@ -28,7 +28,9 @@
                                     <th>Model</th>
                                     <th>No Plat</th>
                                     <th>Tarif</th>
+                                    @if(Auth::user()->id == 1)
                                     <th colspan="2">Action</th>
+                                    @endif
                                 </thead>
                                 <tbody>
                                     @php

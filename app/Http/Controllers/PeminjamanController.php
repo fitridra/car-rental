@@ -18,9 +18,11 @@ class PeminjamanController extends Controller
 		return view('peminjaman.index', compact('data_peminjaman'));
     }
 
-    public function kembali(){
-        $data_kembali = Peminjaman::paginate(4);
-	
+    public function kembali(Request $request){
+        $data_kembali = Peminjaman::when($request->cari, function ($query) use ($request) {
+			$query->where('id_mobil', 'LIKE', "%{$request->cari}%");
+		})->get();
+
 		return view('peminjaman.kembali', compact('data_kembali'));
     }
 
@@ -31,12 +33,14 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        return view('peminjaman/form1');
+        $data = Peminjaman::get();
+        return view('peminjaman/form1',compact('data'));
     }
 
     public function create2()
     {
-        return view('peminjaman/form2');
+        $data = Peminjaman::get();
+        return view('peminjaman/form2',compact('data'));
     }
 
     /**
@@ -52,9 +56,10 @@ class PeminjamanController extends Controller
 			'id_user' => 'required',
 			'tgl_mulai' => 'required',
 			'tgl_selesai' => 'required',
+            'jumlah_biaya' => 'required',
 		]);
 
-		Hama::create($validatedData);
+		Peminjaman::create($validatedData);
 
 		return redirect()->route('peminjaman')->with('sukses', 'Data Berhasil Ditambahkan');
 	}

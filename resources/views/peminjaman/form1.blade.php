@@ -11,21 +11,29 @@
                         <h4 class="title">Form Peminjaman</h4>
                     </div>
                     <div class="content">
-                        <form action="/peminjaman" action="post">
+                        <form action="/tambah_peminjaman" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>No Plat</label>
-                                        <input type="text" class="form-control border-input" placeholder="No Plat">
+                                        <select class="form-control" name="id_mobil">
+                                            <option selected>Pilih Mobil</option>
+                                            @foreach($data as $p)
+                                            <option value="{{$p->mobil->id}}">{{$p->mobil->no_plat}} || {{ $p->mobil->merk}} - {{$p->mobil->model}}</option>
+                                            @endforeach
+                                        </select>
+
                                     </div>
                                 </div>
                             </div>
-
+                            <input type="hidden" name="id_user" value="{{Auth::user()->id}}">
+                            <input type="hidden" name="jumlah_biaya" value="0">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tanggal Mulai</label>
-                                        <input type="date" class="form-control border-input" placeholder="No Plat">
+                                        <input type="date" name="tgl_mulai" class="form-control border-input">
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +42,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tanggal Selesai</label>
-                                        <input type="date" class="form-control border-input" placeholder="No Plat">
+                                        <input type="date" name="tgl_selesai" class="form-control border-input">
                                     </div>
                                 </div>
                             </div>
